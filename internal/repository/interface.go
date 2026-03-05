@@ -23,12 +23,5 @@ type TaskRepository interface {
 	// Умные методы
 	GetOverdue(ctx context.Context, userID int) ([]*domain.Task, error)
 	GetByPriority(ctx context.Context, userID int, priority domain.Priority) ([]*domain.Task, error)
-	GetStats(ctx context.Context, userID int) (*TaskStats, error)
-}
-
-type TaskStats struct {
-	Total     int            `json:"total"`
-	Completed int            `json:"completed"`
-	Overdue   int            `json:"overdue"`
-	ByPriority map[domain.Priority]int `json:"by_priority"`
+	GetStats(ctx context.Context, userID int) (*domain.TaskStats, error)
 }
